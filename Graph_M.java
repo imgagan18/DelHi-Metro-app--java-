@@ -4,14 +4,14 @@ import java.io.*;
 	
 	public class Graph_M 
 	{
-		public class Vertex //Represents a station in the metro map
+		public class Vertex  //Represents a station in the metro map
 		{
 			HashMap<String, Integer> nbrs = new HashMap<>();
 		}
 
 		static HashMap<String, Vertex> vtces;
 
-		public Graph_M() //he main class that represents the metro map. It contains a HashMap named vtces that maps station names to their corresponding Vertex objects.
+		public Graph_M()  //he main class that represents the metro map. It contains a HashMap named vtces that maps station names to their corresponding Vertex objects.
 
 		{
 			vtces = new HashMap<>();
@@ -22,7 +22,7 @@ import java.io.*;
 			return this.vtces.size();
 		}
 
-		public boolean containsVertex(String vname)//Checks if a vertex with the given name exists in the graph.
+		public boolean containsVertex(String vname) //Checks if a vertex with the given name exists in the graph.
 		{
 			return this.vtces.containsKey(vname);
 		}
@@ -31,20 +31,6 @@ import java.io.*;
 		{
 			Vertex vtx = new Vertex();
 			vtces.put(vname, vtx);
-		}
-
-		public void removeVertex(String vname) 
-		{
-			Vertex vtx = vtces.get(vname);
-			ArrayList<String> keys = new ArrayList<>(vtx.nbrs.keySet());
-
-			for (String key : keys) 
-			{
-				Vertex nbrVtx = vtces.get(key);
-				nbrVtx.nbrs.remove(vname);
-			}
-
-			vtces.remove(vname);
 		}
 
 		public int numEdges() 
@@ -131,7 +117,6 @@ import java.io.*;
 		
 		public void display_Stations() 
 		{
-			System.out.println("\n***********************************************************************\n");
 			ArrayList<String> keys = new ArrayList<>(vtces.keySet());
 			int i=1;
 			for(String key : keys) 
@@ -363,24 +348,25 @@ import java.io.*;
 		
 		public static void Create_Metro_Map(Graph_M g)
 		{
+			//B" for Blue Line stations, "Y" for Yellow Line stations, "O" for Orange Line stations, "P" for Pink Line stations, "PR" for Purple Line stations, "BP" for Blue Pink Line stations, and "O" for Orange Line stations
 			g.addVertex("Noida Sector 62~B");
 			g.addVertex("Botanical Garden~B");
 			g.addVertex("Yamuna Bank~B");
-			g.addVertex("Rajiv Chowk~BY");
 			g.addVertex("Vaishali~B");
 			g.addVertex("Moti Nagar~B");
-			g.addVertex("Janak Puri West~BO");
 			g.addVertex("Dwarka Sector 21~B");
+			g.addVertex("Rajiv Chowk~BY");
+			g.addVertex("Janak Puri West~BO");
 			g.addVertex("Huda City Center~Y");
 			g.addVertex("Saket~Y");
 			g.addVertex("Vishwavidyalaya~Y");
 			g.addVertex("Chandni Chowk~Y");
-			g.addVertex("New Delhi~YO");
 			g.addVertex("AIIMS~Y");
 			g.addVertex("Shivaji Stadium~O");
 			g.addVertex("DDS Campus~O");
 			g.addVertex("IGI Airport~O");
 			g.addVertex("Rajouri Garden~BP");
+			g.addVertex("New Delhi~YO");
 			g.addVertex("Netaji Subhash Place~PR");
 			g.addVertex("Punjabi Bagh West~P");
 
@@ -536,3 +522,7 @@ import java.io.*;
 					}
 					break;  
 				}}}
+//breadth -first search (time)
+//Usage in Metro Applications: In a metro application, if the graph representing the metro stations and their connections is unweighted (i.e., all connections have the same cost), BFS can be used to find the shortest path between two stations. This is because BFS guarantees that the first time a station is discovered, it is the shortest path from the source station 3.
+//Depth-First Search (cost)
+// Usage in Metro Applications: In scenarios where the metro application needs to explore all possible routes or paths between stations (for example, for route planning or exploring alternative routes), DFS can be used. However, for finding the shortest path and time between two places, especially in a weighted graph where the cost of traveling between stations varies, DFS is not the optimal choice 2.

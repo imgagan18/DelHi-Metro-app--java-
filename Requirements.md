@@ -21,7 +21,6 @@ The Collection in Java is a framework that provides an architecture to store and
 * ArrayList
 
 
-
 ## Data Structures
 Data structure is a way of organizing data in the computer so that it can be used effectively.
 The data structures used in this project are:
