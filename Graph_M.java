@@ -1,7 +1,6 @@
 import java.util.*;
 import java.io.*;
 
-	
 	public class Graph_M 
 	{
 		public class Vertex  //Represents a station in the metro map
@@ -19,12 +18,12 @@ import java.io.*;
 
 		public int numVetex() //Returns the number of vertices (stations) in the graph.
 		{
-			return this.vtces.size();
+			return Graph_M.vtces.size();
 		}
 
 		public boolean containsVertex(String vname) //Checks if a vertex with the given name exists in the graph.
 		{
-			return this.vtces.containsKey(vname);
+			return Graph_M.vtces.containsKey(vname);
 		}
 
 		public void addVertex(String vname) //Adds a new vertex to the graph.
@@ -450,6 +449,7 @@ import java.io.*;
 				System.out.println("1. LIST ALL THE STATIONS IN THE MAP");
 				System.out.println("2. SHOW THE METRO MAP");
 				System.out.println("3. GET SHORTEST DISTANCE FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");				
+				System.out.println("4. GET SHORTEST TIME TO REACH FROM A 'SOURCE' STATION TO 'DESTINATION' STATION");
 				System.out.println("5. EXIT THE MENU");
 				System.out.print("\nENTER YOUR CHOICE FROM THE ABOVE LIST (1 to 4) : ");
 				int choice = -1;
@@ -480,6 +480,8 @@ import java.io.*;
 					System.out.println("ENTER YOUR CHOICE:");
 				        int ch = Integer.parseInt(inp.readLine());
 					int j;
+
+					
 						
 					String st1 = "", st2 = "";
 					System.out.println("ENTER THE SOURCE AND DESTINATION STATIONS");
@@ -519,8 +521,19 @@ import java.io.*;
 					else
 					System.out.println("SHORTEST DISTANCE FROM "+st1+" TO "+st2+" IS "+g.dijkstra(st1, st2, false)+"KM\n");
 					break;
+					
+					case 4:
+					System.out.print("ENTER THE SOURCE STATION: ");
+					String sat1 = inp.readLine();
+					System.out.print("ENTER THE DESTINATION STATION: ");
+					String sat2 = inp.readLine();
+				
+					HashMap<String, Boolean> processed1= new HashMap<>();				
+					System.out.println("SHORTEST TIME FROM ("+sat1+") TO ("+sat2+") IS "+g.dijkstra(sat1, sat2, true)/60+" MINUTES\n\n");
+					break;
 					}
-					break;  
+					break; 
+					 
 				}}}
 //breadth -first search (time)
 //Usage in Metro Applications: In a metro application, if the graph representing the metro stations and their connections is unweighted (i.e., all connections have the same cost), BFS can be used to find the shortest path between two stations. This is because BFS guarantees that the first time a station is discovered, it is the shortest path from the source station 3.
